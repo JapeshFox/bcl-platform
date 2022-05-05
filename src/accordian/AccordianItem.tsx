@@ -21,8 +21,8 @@ export default function AccordianItem({
   const bodyId = `accordianItemBody${index}`;
 
   const onClick = useCallback(() => {
-    setActiveIndex(isActive ? -1 : index);
-  }, [isActive, index]);
+    setActiveIndex(index);
+  }, [index]);
 
   return (
     <div className="accordionItem collapsed bg-white border border-gray-200">

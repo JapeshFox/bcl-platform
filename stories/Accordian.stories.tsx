@@ -12,15 +12,15 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = ({ items, renderBody, ...args }) => (
-  <Accordian items={items} renderBody={renderBody} {...args} />
-);
+const Template: Story = ({ items, renderBody, alwaysOpen, ...args }) => {
+  return (
+    <Accordian items={items} renderBody={renderBody} alwaysOpen={alwaysOpen} />
+  );
+};
 
 // By passing using the Args format for exported stories, you can control the props for a component for reuse in a test
 // https://storybook.js.org/docs/react/workflows/unit-testing
-export const Default = Template.bind({});
-
-Default.args = {
+const commonArgs = {
   items: [
     {
       title: 'Accordian value 1',
@@ -42,3 +42,8 @@ Default.args = {
     );
   },
 };
+export const Default = Template.bind({});
+Default.args = { ...commonArgs };
+
+export const AlwaysOpen = Template.bind({});
+AlwaysOpen.args = { ...commonArgs, alwaysOpen: true };

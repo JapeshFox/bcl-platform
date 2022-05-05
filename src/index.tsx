@@ -1,5 +1,6 @@
 // import React, { FC, HTMLAttributes, ReactChild } from 'react';
 export { default as Accordian } from './accordian';
+export * from './accordian';
 
 // export interface Props extends HTMLAttributes<HTMLDivElement> {
 //   /** custom content, defaults to 'the snozzberries taste like snozzberries' */
