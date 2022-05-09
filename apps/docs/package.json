@@ -1,0 +1,48 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "dev": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-is": "^18.1.0",
+    "postcss": "^8.4.13",
+    "tailwindcss": "^3.0.24"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "bcl-docs",
+  "author": "japesh",
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addons": "^6.4.22",
+    "@storybook/react": "^6.4.22",
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.3",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "clsx": "^1.1.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4"
+  }
+}

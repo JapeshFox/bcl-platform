@@ -43,7 +43,7 @@ function withAlwaysOpenAccordianHooks(Component: FC<AccordianProps>) {
     );
     const _setActiveIndex = useCallback(
       (index: number) =>
-        setActiveIndex(({ ...currentActiveIndexes }) => {
+        setActiveIndex(([...currentActiveIndexes]) => {
           currentActiveIndexes[index] = !isActive(index, currentActiveIndexes);
           return currentActiveIndexes;
         }),
