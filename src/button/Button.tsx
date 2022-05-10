@@ -8,6 +8,8 @@ export const Button: FC<ButtonProps> = ({ variant, buttonAction, disabled,  outl
     const disabledStyles = disabled ? 'opacity-30 cursor-not-allowed': '';
     
     const getSize = () => {
+        // array so that responsive widths can also be set
+        // [TODO] Set responsive widths
         const sizeStyles = [];
         if (size === 'large') {
             sizeStyles.push('h-12');
