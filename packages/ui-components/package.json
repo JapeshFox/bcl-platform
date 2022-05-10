@@ -11,7 +11,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsdx watch || yarn watch-tailwind",
+    "start": "tsdx watch",
     "build": "tsdx build && yarn build-tailwind",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
@@ -19,7 +19,7 @@
     "size": "size-limit",
     "analyze": "size-limit --why",
     "build-tailwind": "NODE_ENV=production && tailwindcss -o ./dist/main.css --minify",
-    "watch-tailwind": "NODE_ENV=production && tailwindcss -o ./dist/main.css --minify --watch"
+    "watchTailwind": "tailwindcss -o ./dist/main.css --minify --watch"
   },
   "peerDependencies": {
     "react": "^18.1.0",
@@ -41,7 +41,6 @@
   },
   "name": "bcl-ui-components",
   "author": "japesh",
-  "module": "dist/bcl-ui-components.esm.js",
   "size-limit": [
     {
       "path": "dist/bcl-ui-components.cjs.production.min.js",

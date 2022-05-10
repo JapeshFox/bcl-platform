@@ -5,14 +5,15 @@
       "outputs": ["dist/**", ".next/**"]
     },
     "start": {
-      "dependsOn": ["^start"],
-      "outputs": ["dist/**"]
+      "dependsOn": [],
+      "outputs": []
     },
     "lint": {
       "outputs": []
     },
     "dev": {
       "cache": false
-    }
+    },
+    "watchTailwind": {}
   }
 }
