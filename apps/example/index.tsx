@@ -1,14 +1,14 @@
 // import 'react-app-polyfill/ie11';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Accordian } from '../dist';
+import { Accordian } from 'bcl-ui-components';
 
-import "../dist/main.css";
+import "bcl-ui-components/main.css";
 
 const App = () => {
   return (
     <div>
-      <Accordian />
+      hello
     </div>
   );
 };

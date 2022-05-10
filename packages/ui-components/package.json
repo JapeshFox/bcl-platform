@@ -11,14 +11,15 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsdx watch",
+    "start": "tsdx watch || yarn watch-tailwind",
     "build": "tsdx build && yarn build-tailwind",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "build-tailwind": "NODE_ENV=production && tailwindcss -o ./dist/main.css --minify"
+    "build-tailwind": "NODE_ENV=production && tailwindcss -o ./dist/main.css --minify",
+    "watch-tailwind": "NODE_ENV=production && tailwindcss -o ./dist/main.css --minify --watch"
   },
   "peerDependencies": {
     "react": "^18.1.0",
