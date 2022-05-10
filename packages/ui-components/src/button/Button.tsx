@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { ButtonProps } from './Button.types';
 
-export const Button: FC<ButtonProps> = ({ variant, buttonAction, disabled,  outlined = false, label, size = 'medium'}) => {
+const Button: FC<ButtonProps> = ({ variant, buttonAction, disabled,  outlined = false, label, size = 'medium'}) => {
 
     const isPrimary = variant ? variant === 'primary' : true;
     const colorStyles = outlined ? 'bg-white text-black' : isPrimary ? 'bg-indigo-800 text-white' : 'bg-indigo-100'
