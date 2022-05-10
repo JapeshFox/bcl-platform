@@ -1,5 +1,5 @@
 // https://storybook.js.org/docs/react/writing-stories/parameters#global-parameters
-import "../main.css";
+import "bcl-ui-components/main.css";
 
 export const parameters = {
   // https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args
