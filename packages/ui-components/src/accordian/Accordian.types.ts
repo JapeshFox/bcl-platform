@@ -1,7 +1,7 @@
 import { ReactElement, HTMLAttributes } from 'react';
 
 export type Item = Record<string, unknown> & { title: string };
-export interface BasicAccordianProps extends HTMLAttributes<HTMLDivElement> {
+export interface BasicAccordianType extends HTMLAttributes<HTMLDivElement> {
   items: Item[];
   renderBody: (
     item: Item,
@@ -10,7 +10,7 @@ export interface BasicAccordianProps extends HTMLAttributes<HTMLDivElement> {
   ) => ReactElement | string | JSX.Element;
 }
 
-export interface AccordianProps extends BasicAccordianProps {
+export interface AccordianType extends BasicAccordianType {
   isActive: (index: number) => boolean;
   setActiveIndex: (index: number) => void;
 }

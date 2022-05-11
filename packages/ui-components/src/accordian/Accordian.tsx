@@ -1,12 +1,12 @@
 import React, { FC, useCallback, useState } from 'react';
 import AccordianItem from './AccordianItem';
-import { BasicAccordianProps, AccordianProps } from './Accordian.types';
+import { BasicAccordianType, AccordianType } from './Accordian.types';
 import { defaultProps } from './Accordian.helpers';
 
-function withBasicAccordianHooks(Component: FC<AccordianProps>) {
-  const BasicAccordian: FC<BasicAccordianProps> = ({
+function withBasicAccordianHooks(Component: FC<AccordianType>) {
+  const BasicAccordian: FC<BasicAccordianType> = ({
     ...props
-  }: BasicAccordianProps) => {
+  }: BasicAccordianType) => {
     const [activeIndex, setActiveIndex] = useState(1);
     console.log('activeIndex', activeIndex);
     const isActive = useCallback(
@@ -31,10 +31,10 @@ function withBasicAccordianHooks(Component: FC<AccordianProps>) {
   return BasicAccordian;
 }
 
-function withAlwaysOpenAccordianHooks(Component: FC<AccordianProps>) {
-  const AlwaysOpenAccordian: FC<BasicAccordianProps> = ({
+function withAlwaysOpenAccordianHooks(Component: FC<AccordianType>) {
+  const AlwaysOpenAccordian: FC<BasicAccordianType> = ({
     ...props
-  }: BasicAccordianProps) => {
+  }: BasicAccordianType) => {
     const [activeIndexes, setActiveIndex] = useState<Array<boolean>>([true]);
     const isActive = useCallback(
       (index: number, currentActiveIndexes = activeIndexes) =>
@@ -61,7 +61,7 @@ function withAlwaysOpenAccordianHooks(Component: FC<AccordianProps>) {
   return AlwaysOpenAccordian;
 }
 
-const AccordianContainer: FC<AccordianProps> = ({
+const AccordianContainer: FC<AccordianType> = ({
   items,
   renderBody,
   isActive,
@@ -90,15 +90,15 @@ AccordianContainer.defaultProps = defaultProps;
 export {
   AlwaysOpenAccordian,
   BasicAccordian,
-  BasicAccordianProps,
-  AccordianProps,
+  BasicAccordianType,
+  AccordianType,
 };
 
 function Accordian({
   items,
   renderBody,
   alwaysOpen,
-}: BasicAccordianProps & { alwaysOpen: boolean }) {
+}: BasicAccordianType & { alwaysOpen: boolean }) {
   if (alwaysOpen) {
     return <AlwaysOpenAccordian items={items} renderBody={renderBody} />;
   }
