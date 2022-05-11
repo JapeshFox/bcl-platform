@@ -2,7 +2,6 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Accordian } from 'bcl-ui-components/src';
 
-
 const meta: Meta = {
   title: 'Accordian',
   component: Accordian,
@@ -15,7 +14,6 @@ export default meta;
 
 const Template: Story = ({ items, renderBody, alwaysOpen }) => {
   return (
-    // @ts-ignore
     <Accordian items={items} renderBody={renderBody} alwaysOpen={alwaysOpen} />
   );
 };
@@ -35,15 +33,15 @@ const commonArgs = {
       body: 'Accordian body value 1',
     },
   ],
-  // @ts-ignore
-  renderBody: ({ body, strongText }) => {
+  renderBody: ({ body = '', strongText = '' }: Record<string, unknown>) => {
     return (
       <>
-        <strong>{strongText}</strong>
+        <strong>{strongText as string}</strong>
         {body}
       </>
     );
   },
+  alwaysOpen: false,
 };
 export const Default = Template.bind({});
 Default.args = { ...commonArgs };

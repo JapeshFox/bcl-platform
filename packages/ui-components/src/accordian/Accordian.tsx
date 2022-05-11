@@ -1,12 +1,12 @@
 import React, { FC, useCallback, useState } from 'react';
 import AccordianItem from './AccordianItem';
-import { BasicAccordianProps, AccordianProps } from './Accordian.types';
+import { BasicAccordianType, AccordianType } from './Accordian.types';
 import { defaultProps } from './Accordian.helpers';
 
-function withBasicAccordianHooks(Component: FC<AccordianProps>) {
-  const BasicAccordian: FC<BasicAccordianProps> = ({
+function withBasicAccordianHooks(Component: FC<AccordianType>) {
+  const BasicAccordian: FC<BasicAccordianType> = ({
     ...props
-  }: BasicAccordianProps) => {
+  }: BasicAccordianType) => {
     const [activeIndex, setActiveIndex] = useState(1);
     console.log('activeIndex', activeIndex);
     const isActive = useCallback(
@@ -31,10 +31,10 @@ function withBasicAccordianHooks(Component: FC<AccordianProps>) {
   return BasicAccordian;
 }
 
-function withAlwaysOpenAccordianHooks(Component: FC<AccordianProps>) {
-  const AlwaysOpenAccordian: FC<BasicAccordianProps> = ({
+function withAlwaysOpenAccordianHooks(Component: FC<AccordianType>) {
+  const AlwaysOpenAccordian: FC<BasicAccordianType> = ({
     ...props
-  }: BasicAccordianProps) => {
+  }: BasicAccordianType) => {
     const [activeIndexes, setActiveIndex] = useState<Array<boolean>>([true]);
     const isActive = useCallback(
       (index: number, currentActiveIndexes = activeIndexes) =>
@@ -61,48 +61,49 @@ function withAlwaysOpenAccordianHooks(Component: FC<AccordianProps>) {
   return AlwaysOpenAccordian;
 }
 
-const AccordianContainer: FC<AccordianProps> = ({
+const AccordianContainer: FC<AccordianType> = ({
   items,
   renderBody,
   isActive,
   setActiveIndex,
-}) => {
-  return (
-    <div className="accordion">
-      {items.map((item, index) => {
-        return (
-          <AccordianItem
-            key={index}
-            title={item.title}
-            index={index}
-            isActive={isActive(index)}
-            setActiveIndex={setActiveIndex}
-          >
-            {renderBody(item, index, items)}
-          </AccordianItem>
-        );
-      })}
-    </div>
-  );
-};
+}) => (
+  <div className="accordion">
+    {items.map((item, index) => (
+      <AccordianItem
+        key={index}
+        title={item.title}
+        index={index}
+        isActive={isActive(index)}
+        setActiveIndex={setActiveIndex}
+      >
+        {renderBody(item, index, items)}
+      </AccordianItem>
+    ))}
+  </div>
+);
 
 const BasicAccordian = withBasicAccordianHooks(AccordianContainer);
 const AlwaysOpenAccordian = withAlwaysOpenAccordianHooks(AccordianContainer);
 
 AccordianContainer.defaultProps = defaultProps;
 
-export { AlwaysOpenAccordian, BasicAccordian };
+export {
+  AlwaysOpenAccordian,
+  BasicAccordian,
+  BasicAccordianType,
+  AccordianType,
+};
 
-const Accordian = ({
+function Accordian({
   items,
   renderBody,
   alwaysOpen,
-}: BasicAccordianProps & { alwaysOpen: boolean }) => {
+}: BasicAccordianType & { alwaysOpen: boolean }) {
   if (alwaysOpen) {
     return <AlwaysOpenAccordian items={items} renderBody={renderBody} />;
   }
   return <BasicAccordian items={items} renderBody={renderBody} />;
-};
+}
 
 Accordian.defaultProps = { ...defaultProps, alwaysOpen: false };
 export default Accordian;
